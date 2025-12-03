@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'development', 
   entry: './src/index.js',
 
   output: {
@@ -24,24 +24,25 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        type: 'asset/resource', 
       },
     ],
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(), 
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: './src/index.html', 
     }),
   ],
 
   devServer: {
     static: './dist',
     port: 8080,
+    open: true, 
+  },
+
+  resolve: {
+    extensions: ['.js', '.scss'],
   },
 };
