@@ -1,29 +1,37 @@
-name: GitHub Pages Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - name: Setup Node
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: '22'
+
+    - name: Enable Corepack
+      run: corepack enable
+
+    - name: Use Yarn 4
+      run: corepack prepare yarn@4.12.0 --activate
 
     - name: Install dependencies
       run: yarn install
 
-    - name: Build
+    - name: Build project
       run: yarn build
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v6
       with:
         github_token: ${{ secrets.GH_PAGES_TOKEN }}
         publish_dir: ./dist
