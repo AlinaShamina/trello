@@ -1,4 +1,4 @@
-import Column from "./column";
+import Column from './column';
 
 export default class Board {
   constructor(root) {
@@ -20,7 +20,6 @@ export default class Board {
   render() {
     this.board = document.createElement('div');
     this.board.classList.add('board');
-
     this.root.appendChild(this.board);
 
     this.todo = new Column('TODO', this.columnsData.todo, this);
