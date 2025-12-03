@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Trello Board</title>
+  <title>Trello Clone</title>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="board" class="board">
+    <div class="column" data-id="1">
+      <h2>To Do</h2>
+      <div class="cards"></div>
+      <button class="add-card">Add another card</button>
+    </div>
+    <div class="column" data-id="2">
+      <h2>In Progress</h2>
+      <div class="cards"></div>
+      <button class="add-card">Add another card</button>
+    </div>
+    <div class="column" data-id="3">
+      <h2>Done</h2>
+      <div class="cards"></div>
+      <button class="add-card">Add another card</button>
+    </div>
+  </div>
 </body>
 </html>
